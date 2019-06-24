@@ -1,0 +1,77 @@
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+// ios--------->istream---------->ifstream
+//      |                  |
+//      |                  ----- >iostream-------fstreaam
+//      |                  |
+//      ------->ostream---------->ofstream
+
+
+
+int main() {
+	ifstream file;
+	bool b;
+	char s;
+	//ios::in用来读取文件，ios::out用来写文件
+	file.open("C:\\Users\\photo\\Documents\\Charts\\RNC\\Charts\\Charts\\ENC\\SCS\\EA200001.000", ios::in | ios::binary);
+	if (!file) {
+		cout << "Input error" << endl;
+		return 1;
+	}
+	int ReadBytes = 0;
+	while (ReadBytes < 24) {
+		file.read(&s, 1); cout << s;
+		ReadBytes++;
+	}
+	cout << endl;
+	//244只针对本文件
+	while (ReadBytes < 244) {
+		file.read(&s, 1); cout << s;
+		ReadBytes++;
+		if ((ReadBytes - 24) % 11 == 0)cout << endl;
+	}
+	//这里的字段终结器使用的时ASCII中的30/31，前后两个是30，中间的是30
+	while (file.read(&s, 1)) {
+		ReadBytes++;
+		if (s == 30||s==31) {
+			cout << "-";
+			while (file.read(&s, 1)) {
+				ReadBytes++;
+				if (s == 30||s == 31) {
+					cout << "-";
+					cout << endl;
+					while (file.read(&s, 1)) {
+						ReadBytes++;
+						if (s == 30 || s == 31) {
+							cout << "-";
+							break;
+						}
+						else {
+							cout << s;
+						}
+					}
+					break;
+				}
+				else {
+					cout << s;
+				}
+			}
+			break;
+		}
+		else {
+			cout << "End";
+			break;
+		}
+	}
+	cout << endl;
+	while (file.read(&s, 1)) {
+		cout << s;
+	}
+	cout << endl << ReadBytes << endl;
+	file.close();
+	system("pause");
+	return 0;
+}
