@@ -1,10 +1,11 @@
 % LilyBin
 \version "2.20.0"
-
 \header {
-  title = "Autumn Leaves"
-  arranger = " by Payne"
+  title = "Autumn Leaves Walking Bass (Arpeggio)"
+  composer = "Payne rewrite"
+  tagline = \markup {}
 }
+
 %Bb: Bb C D Eb F G A 
 rhythm = {
   c,4\3 ees\3 g\2 bes\1
@@ -57,20 +58,48 @@ rhythm = {
 
 \score {
 \new StaffGroup<<
+  \chords {
+    c1:m7 f:7 bes:maj ees:maj 
+    a:m7.5- d:7 g:m7 g:m7
+    c1:m7 f:7 bes:maj ees:maj 
+    a:m7.5- d:7 g:m7 g:m7
+    a:m7.5- d:7 g:m7 g:m7
+    c:m7 f:7 bes:maj ees:maj 
+    a:m7.5- d:7 g2:m7 ges:7 f:7 e:7
+    a1:m7.5- d:7 g:m7 g:m7
+  }
   \new Staff \with {
     \omit StringNumber
     }\relative{
     \clef "bass_8"
     \numericTimeSignature
     \time 4/4 
+    \tempo 4=130
+    \set Staff.midiInstrument = "acoustic bass"
+    %"electric bass (finger) "
     \rhythm
   }
   \new TabStaff \with {
     stringTunings = #bass-tuning
-  }
-  \relative{
+  }\relative{
     %\tabFullNotation
     \rhythm
   }
 >>
+  \layout {}
+  \midi {
+%     \context {
+%         \new Staff \with {
+%           \omit StringNumber
+%           }\relative{
+%           \clef "bass_8"
+%           \numericTimeSignature
+%           \time 4/4 
+%           \tempo 4=240
+%           \set Staff.midiInstrument = "electric bass (finger) "
+%           \rhythm
+%         }
+%     }
+  }
 }
+
