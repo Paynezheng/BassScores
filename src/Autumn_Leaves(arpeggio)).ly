@@ -1,4 +1,3 @@
-% LilyBin
 \version "2.20.0"
 \header {
   title = "Autumn Leaves Walking Bass (Arpeggio)"
@@ -72,6 +71,7 @@ rhythm = {
     \omit StringNumber
     }\relative{
     \clef "bass_8"
+    \key g \minor
     \numericTimeSignature
     \time 4/4 
     \tempo 4=130
