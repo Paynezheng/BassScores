@@ -66,6 +66,10 @@ SessionA = {
     a:m7.5- d:7.13- g:m7 g:m7
     c1:m7 f:7 bes:maj ees:maj 
     a:m7.5- d:7.13- g:m7 g:m7
+    a:m7.5- d:7.13- g:m7 g:m7
+    c1:m7 f:7 bes:maj ees:maj
+    a:m7.5- d:7.13- g2:m7 ges:m7 f:m7 e:7
+    a1:m7.5- d:7.13- g:m7 g:m7 
   }
   \new Staff \SessionA
   >>
