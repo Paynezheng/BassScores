@@ -1,2 +1,13 @@
 # BassScore
-正如你所看到的，这里是某贝斯手练习的时候的谱子，也记录一些学习心得和感悟。
+## 🚴 Usage
+
+###  Install Lilypond (Ubuntu)
+
+```
+sudo apt install lilypond 
+```
+### 🐱‍🏍 Build src file to MIDI&&PDF
+
+```
+lilypond filename
+```
