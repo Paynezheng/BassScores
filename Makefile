@@ -59,6 +59,7 @@ info:
 	@echo ""
 
 midi: midi_dir $(addprefix $(TARG_MIDI_DIR)/,$(MIDI_MANUFACTURE))
+pdf: pdf_dir $(addprefix $(TARG_PDF_DIR)/,$(PDF_MANUFACTURE))
 
 midi_dir: 
 ifeq ($(wildcard $(TARG_MIDI_DIR)),)
@@ -72,11 +73,19 @@ endif
 
 $(TARG_MIDI_DIR)/%.midi : $(notdir %.ly)
 	@echo [lilypond] $@
-	@lilypond $^
+	@lilypond --output=midi $^
 
 %.midi : $(notdir %.ly)
 	@echo [lilypond] $@
-	@lilypond $^
+	@lilypond --output=midi $^
+
+$(TARG_PDF_DIR)/%.pdf : $(notdir %.ly)
+	@echo [lilypond] $@
+	@lilypond -fpdf --output=pdf $^
+
+$(TARG_PDF_DIR)/%.pdf : $(notdir %.ly)
+	@echo [lilypond] $@
+	@lilypond -fpdf --output=pdf $^
 
 clean:
 	-rm -rf midi

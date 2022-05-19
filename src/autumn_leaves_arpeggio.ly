@@ -1,7 +1,7 @@
 \version "2.20.0"
 \header {
   title = "Autumn Leaves Walking Bass (Arpeggio)"
-  composer = "Payne rewrite"
+  composer = "Composed by Payne"
   tagline = \markup {}
 }
 
