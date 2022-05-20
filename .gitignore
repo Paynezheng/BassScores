@@ -4,4 +4,8 @@ midi
 midi/*
 pdf
 pdf/*
+manufacture
+manufacture/*
+tmp
+tmp/*
 Makefile.test

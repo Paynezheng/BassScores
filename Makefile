@@ -30,6 +30,7 @@ SRC_FILE := $(SRC_PATH)/*.ly
 
 TARG_MIDI_DIR := midi
 TARG_PDF_DIR := pdf
+TMP_DIR := tmp
 
 vpath %.ly $(SRC_PATH)
 
@@ -37,16 +38,17 @@ MIDI_MANUFACTURE=$(notdir $(patsubst %.ly,%.midi,$(wildcard $(SRC_PATH)/*.ly)))
 PDF_MANUFACTURE=$(notdir $(patsubst %.ly,%.pdf,$(wildcard $(SRC_PATH)/*.ly)))
 
 
-.PHONY : all info midi pdf midi_dir pdf_dir clean
+.PHONY : all info gen midi pdf midi_dir pdf_dir tmp_dir clean
 
-all: info midi pdf
-
+all: info gen midi_dir pdf_dir
+	@cp $(TMP_DIR)/*.midi $(TARG_MIDI_DIR)/
+	@cp $(TMP_DIR)/*.pdf $(TARG_PDF_DIR)/
+## -rm -rf tmp
 
 info:
 	@echo ""
-	@echo This makefile will compile the Midifile library and/or
-	@echo the Midifile programs.  You may have to make the library
-	@echo first if compiling the programs. Type one of the following:
+	@echo This makefile will compile the Lilypond File to midi file or pdf
+	@echo or svg, png .... To gen target file, Type one of the following:
 	@echo "   make midi"
 	@echo or
 	@echo "   make pdf"
@@ -58,8 +60,27 @@ info:
 	@echo Typing \"make\" alone will compile and gen both midi and pdf at the same time.
 	@echo ""
 
-midi: midi_dir $(addprefix $(TARG_MIDI_DIR)/,$(MIDI_MANUFACTURE))
-pdf: pdf_dir $(addprefix $(TARG_PDF_DIR)/,$(PDF_MANUFACTURE))
+gen: tmp_dir $(addprefix $(TMP_DIR)/,$(PDF_MANUFACTURE))
+
+midi: midi_dir 
+	@cp $(TMP_DIR)/*.midi $(TARG_MIDI_DIR)/
+## -rm -rf tmp
+pdf: pdf_dir
+	@cp $(TMP_DIR)/*.pdf $(TARG_PDF_DIR)/
+## -rm -rf tmp
+
+tmp_dir:
+ifeq ($(wildcard $(TMP_DIR)),)
+	@-mkdir -p $(TMP_DIR)
+endif
+
+$(TMP_DIR)/%.pdf : $(notdir %.ly)
+	@echo [lilypond] $@
+	@lilypond -fpdf --output=$(TMP_DIR) $^
+
+$(TMP_DIR)/%.pdf : $(notdir %.ly)
+	@echo [lilypond] $@
+	@lilypond -fpdf --output=$(TMP_DIR) $^
 
 midi_dir: 
 ifeq ($(wildcard $(TARG_MIDI_DIR)),)
@@ -71,22 +92,7 @@ ifeq ($(wildcard $(TARG_PDF_DIR)),)
 	@-mkdir -p $(TARG_PDF_DIR)
 endif
 
-$(TARG_MIDI_DIR)/%.midi : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond --output=midi $^
-
-%.midi : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond --output=midi $^
-
-$(TARG_PDF_DIR)/%.pdf : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond -fpdf --output=pdf $^
-
-$(TARG_PDF_DIR)/%.pdf : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond -fpdf --output=pdf $^
-
 clean:
 	-rm -rf midi
 	-rm -rf pdf
+	-rm -rf tmp
