@@ -3,7 +3,7 @@
 ##
 ## Programmer:    Jianyuan Zheng <photosynthesi@outlook.com>
 ## Creation Date: Thu May 19 06:30:02 UTC 2022
-## Last Modified: Thu May 19 06:30:02 UTC 2022
+## Last Modified: Fri May 20 01:17:48 UTC 2022
 ## Filename:      BassScore/Makefile
 ## Syntax:        GNU Makefile
 ## Description:   This Makefile can Gen some midi/pdf from lilypond source code
@@ -52,35 +52,38 @@ info:
 	@echo "   make midi"
 	@echo or
 	@echo "   make pdf"
-	@echo ""
-	@echo To compile a specific score called xxx.ly in PATH, type:
-	@echo "   make PATH/filename.ly"
-	@echo "eg. src/vulfpeck/beastly.ly, type: make vulfpeck/beastly.ly"
-	@echo ""
+	@echo make both midi and pdf, type:
+	@echo "   make"
+# @echo To compile a specific score called xxx.ly in PATH, type:
+# @echo "   make PATH/filename.ly"
+# @echo "eg. src/vulfpeck/beastly.ly, type: make vulfpeck/beastly.ly"
+# @echo ""
 	@echo Typing \"make\" alone will compile and gen both midi and pdf at the same time.
 	@echo ""
 
 gen: tmp_dir $(addprefix $(TMP_DIR)/,$(PDF_MANUFACTURE))
 
-midi: midi_dir 
+midi: gen midi_dir 
 	@cp $(TMP_DIR)/*.midi $(TARG_MIDI_DIR)/
 ## -rm -rf tmp
-pdf: pdf_dir
+pdf: gen pdf_dir
 	@cp $(TMP_DIR)/*.pdf $(TARG_PDF_DIR)/
 ## -rm -rf tmp
+
+$(TMP_DIR)/%.pdf : $(notdir %.ly)
+	@echo [lilypond] $@
+	@lilypond -fpdf --output=$(TMP_DIR) $^
+
+# % : $(notdir %.ly)
+# 	@echo [lilypond] $@
+# 	@lilypond -fpdf --output=$(TMP_DIR) $^
+# 	-cp $(TMP_DIR)/%.midi $(TARG_MIDI_DIR)/
+# 	@cp $(TMP_DIR)/%.pdf $(TARG_PDF_DIR)/
 
 tmp_dir:
 ifeq ($(wildcard $(TMP_DIR)),)
 	@-mkdir -p $(TMP_DIR)
 endif
-
-$(TMP_DIR)/%.pdf : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond -fpdf --output=$(TMP_DIR) $^
-
-$(TMP_DIR)/%.pdf : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond -fpdf --output=$(TMP_DIR) $^
 
 midi_dir: 
 ifeq ($(wildcard $(TARG_MIDI_DIR)),)
