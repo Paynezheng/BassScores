@@ -54,10 +54,10 @@ info:
 	@echo "   make pdf"
 	@echo make both midi and pdf, type:
 	@echo "   make"
-# @echo To compile a specific score called xxx.ly in PATH, type:
-# @echo "   make PATH/filename.ly"
-# @echo "eg. src/vulfpeck/beastly.ly, type: make vulfpeck/beastly.ly"
-# @echo ""
+	# @echo To compile a specific score called xxx.ly in PATH, type:
+	# @echo "   make PATH/filename.ly"
+	# @echo "eg. src/vulfpeck/beastly.ly, type: make vulfpeck/beastly.ly"
+	# @echo ""
 	@echo Typing \"make\" alone will compile and gen both midi and pdf at the same time.
 	@echo ""
 
