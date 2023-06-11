@@ -1,4 +1,4 @@
-\version "2.20.0"
+\version "2.18.2"
 \header {
   title = "Autumn Leaves Walking Bass (Arpeggio)"
   composer = "Composed by Payne"

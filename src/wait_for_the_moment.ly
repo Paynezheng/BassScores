@@ -7,9 +7,11 @@
   arranger = "Transcribed by Payne"
 }
 rhythm = {
-  r1 r r
-  r2 g8-.\2 g\2 g16\2 \deadNote g\2 dis\2(e\2) 
+  % 1-4 
+  r1 r r r2 g8-.\2 g\2 g16\2 \deadNote g\2 dis\2(e\2) 
+  % 5
   (\parenthesize e4\2) c,8\3 d16\3 d\3 e8\3 r gis\2 b\1 
+  % 6 
   a-.\2 a,\4 e'4\3 \glissando{\hideNotes \grace c4}\unHideNotes
   g8-.\4 g\4 c8-.\3 c\3 
   f,-.\4 f f-. f16 f e8-. e e-. e16 e |

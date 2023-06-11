@@ -1,6 +1,6 @@
 % lilypond 2.20.0
 % Create By Payne
-\version "2.20.0"
+\version "2.18.2"
 \header {
   title = "Autumn Leaves"
   composer = "Payne"
