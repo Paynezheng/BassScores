@@ -17,6 +17,11 @@ hideFretNumber = {
   \once \override Glissando.bound-details.left.padding = #0.3
 }
 rhythm = {
+  \tempo \markup {
+    Swing
+    \hspace #0.4
+    \rhythm { 8[ 8] } = \rhythm { \tuplet 3/2 { 4 8 } }
+  }
   % 1-4
   r1 ^"Drop D Tunning" r r r \break 
   
@@ -24,7 +29,7 @@ rhythm = {
   r r \tuplet 3/2 4 {d8\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 
     d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2 d\2}
   % d4\2 \glissando{\hideNotes \grace a4\2 }\unHideNotes | \break
-  d4\2 \glissando{\hideFretNumber \grace a4\2 } 
+  d4\2  \glissando{\hideFretNumber \grace a4\2 } 
   
   \repeat volta 3 {
     % 9-12
@@ -192,5 +197,7 @@ rhythm = {
     %\tabFullNotation
     \rhythm
   }
+
 >>
+
 }

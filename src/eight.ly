@@ -8,9 +8,16 @@
   arranger = "Transcribed by Payne"
 }
 rhythm = {
-  r1 r r
-  r2 g8-.\2 g\2 g16\2 \deadNote g\2 dis\2(e\2) 
-
+  r1 ^"Drop D tunning" r r
+  r4 r4 r8 a,,8\4 c16\4 d16\4~ d16 d,16\4~ | \break
+  
+  \repeat volta 5 {
+    d4 ^ "volta 5"g'16\3\glissando a16\3 d,,8\4 c'8\4 \staccato c8\4 d8\4 \staccato d8\4
+    c8\4 \staccato c8\4 g'16\3\glissando a16\3 c,8\4 g'8\3 \staccato g8\3 a8\3 \staccato a8\3
+    g,8\4 \staccato g8\4 g'16\2\glissando a16\2 g,8\4 e'8\3 \staccato e8\3 f8\3 \staccato f8\3
+    bes,8\4 \staccato bes8\4 bes16.\4 a32\4 bes8\4 c8\4 \staccato c8\4 a16.\4 c32\4 a8\4 | \break
+  }
+  
 }
 
 \score {
