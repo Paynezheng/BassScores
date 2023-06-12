@@ -99,3 +99,4 @@ clean:
 	-rm -rf midi
 	-rm -rf pdf
 	-rm -rf tmp
+	-rm src/*.pdf
