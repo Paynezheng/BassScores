@@ -8,4 +8,5 @@ manufacture
 manufacture/*
 tmp
 tmp/*
+src/*.pdf
 Makefile.test

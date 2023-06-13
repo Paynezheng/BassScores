@@ -27,6 +27,7 @@
 
 SRC_PATH := src/
 SRC_FILE := $(SRC_PATH)/*.ly
+COMPILER := lilypond
 
 TARG_MIDI_DIR := midi
 TARG_PDF_DIR := pdf
@@ -71,12 +72,12 @@ pdf: gen pdf_dir
 ## -rm -rf tmp
 
 $(TMP_DIR)/%.pdf : $(notdir %.ly)
-	@echo [lilypond] $@
-	@lilypond -fpdf --output=$(TMP_DIR) $^
+	@echo [$(COMPILER)] $@
+	@$(COMPILER) -fpdf --output=$(TMP_DIR) $^
 
 # % : $(notdir %.ly)
-# 	@echo [lilypond] $@
-# 	@lilypond -fpdf --output=$(TMP_DIR) $^
+# 	@echo [$(COMPILER)] $@
+# 	@$(COMPILER) -fpdf --output=$(TMP_DIR) $^
 # 	-cp $(TMP_DIR)/%.midi $(TARG_MIDI_DIR)/
 # 	@cp $(TMP_DIR)/%.pdf $(TARG_PDF_DIR)/
 
