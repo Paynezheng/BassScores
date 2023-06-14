@@ -29,7 +29,7 @@ rhythm = {
       d,8\4 \staccato d8\4 g'16\3\glissando a16\3 d,,8\4 c'8\4 \staccato c8\4 d4\4
       c8\4 \staccato c8\4 g'16\3\glissando a16\3 g8\3 g8\3 \staccato g8\3 a4\3
       a,8\4 \staccato a8\4 a'8\2 a,16\4 a'16\2 a,16\4 a'16\2 a,16\4 a'16\2 a8\2 a,8\4 
-      bes8\4 \staccato bes8\4 a'8\2 bis,8\4 a'8\3 c,8\4 cis8\4 d8\4 | \break
+      bes8\4 \staccato bes8\4 a'8\2 bes,8\4 a'8\3 c,8\4 cis8\4 d8\4 | \break
     }
     \repeat unfold 2 {
       d,4\4 \deadNote d16\4 d16\4 r16 d16\4~ d4 d8 g8 
