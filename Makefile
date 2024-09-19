@@ -48,6 +48,8 @@ all: info gen midi_dir pdf_dir
 
 info:
 	@echo ""
+	@echo support Lilypond 2.24
+	@echo export PATH=$LILYPOND_BIN_PATH:$PATH
 	@echo This makefile will compile the Lilypond File to midi file or pdf
 	@echo or svg, png .... To gen target file, Type one of the following:
 	@echo "   make midi"
@@ -100,4 +102,3 @@ clean:
 	-rm -rf midi
 	-rm -rf pdf
 	-rm -rf tmp
-	-rm src/*.pdf
